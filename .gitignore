@@ -1,0 +1,41 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Claves y secretos
+*.pem
+*.key
+.akaath/
+keys/
+private/
+.env
+.env.*
+
+# Archivos generados por la firma
+*.provenance.json
+*.pdf.sha256
+*.pdf.sig
+firma_*/
+*.pdf
+*.md.pdf
+
+# Bytecode Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporales
+*.log
+*.tmp
+*.bak

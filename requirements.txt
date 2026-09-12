@@ -1,0 +1,4 @@
+cryptography>=42.0.0
+weasyprint>=60.0
+pypdf>=4.0.0
+reportlab>=4.0.0
