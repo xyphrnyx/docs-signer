@@ -37,16 +37,16 @@ from reportlab.platypus import (
     TableStyle,
 )
 
-APP_NAME = "AKaaTH PDF Postprocessor"
+APP_NAME = "xyphr PDF Signer"
 APP_VERSION = "1.0.0"
-MANIFEST_NAME = "AKaaTH_PROVENANCE_MANIFEST"
+MANIFEST_NAME = "NYX_PROVENANCE_MANIFEST"
 MANIFEST_VERSION = "1.0.0"
 MANIFEST_PROFILE = "APM-1"
-DEFAULT_AUTHOR = "AKaaTH_dev"
+DEFAULT_AUTHOR = "xyphr & nyx"
 DEFAULT_CONTACT = "alessamiau@icloud.com"
-DEFAULT_KEY_ID = "AKaaTH-ED25519-2026-01"
-DEFAULT_ENGINE_FAMILY = "AKaaTH_STRUCTURAL_ENGINES"
-SIGNED_SUFFIX = "_AKaaTH_firmado"
+DEFAULT_KEY_ID = "nyx-ED25519-2026-01"
+DEFAULT_ENGINE_FAMILY = "xyphr_SIGNING_ENGINES"
+SIGNED_SUFFIX = "_firmado"
 
 LOCAL_MODES = ("declared", "hash", "sign-local", "auto")
 
@@ -67,7 +67,7 @@ class EngineProfile:
 
 ENGINE_PROFILES: dict[str, EngineProfile] = {
     "prompt-auditor": EngineProfile(
-        engine_id="AKAATH-PEA-001",
+        engine_id="XYPHER-PEA-001",
         name="AUDITOR_ESTRUCTURAL_DE_PROMPTS",
         version="1.0.0",
         classification="PROMPT_ENGINEERING_AUDITOR_LEVEL_6",
@@ -75,7 +75,7 @@ ENGINE_PROFILES: dict[str, EngineProfile] = {
         derived_from="MOTOR_ESTRUCTURACION_DOCUMENTAL_BETA5",
     ),
     "document-structurer": EngineProfile(
-        engine_id="AKAATH-MED-BETA5",
+        engine_id="XYPHER-MED-BETA5",
         name="MOTOR_ESTRUCTURACION_DOCUMENTAL",
         version="BETA5",
         classification="DOCUMENT_STRUCTURING_ENGINE",
@@ -83,7 +83,7 @@ ENGINE_PROFILES: dict[str, EngineProfile] = {
         derived_from=None,
     ),
     "general": EngineProfile(
-        engine_id="AKAATH-DGE-001",
+        engine_id="XYPHER-DGE-001",
         name="GENERADOR_DOCUMENTAL_GENERAL",
         version="1.0.0",
         classification="GENERAL_DOCUMENT_ENGINE",
@@ -411,7 +411,7 @@ def build_manifest_core(
             "development_method": {
                 "type": "AI_ASSISTED_ITERATIVE_DEVELOPMENT",
                 "statement": (
-                    "Sistema disenado, dirigido, curado y refinado por AKaaTH_dev "
+                    "Sistema disenado, dirigido, curado y refinado por xyphr & nyx "
                     "mediante investigacion, analisis, pruebas y optimizaciones "
                     "realizadas durante multiples sesiones e iteraciones con "
                     "asistencia de modelos de inteligencia artificial."
@@ -429,7 +429,7 @@ def build_manifest_core(
                 "statement": (
                     "La marca acredita arquitectura, metodologia, direccion "
                     "intelectual y procedencia tecnica. No atribuye automaticamente "
-                    "a AKaaTH_dev el material fuente de usuarios o terceros."
+                    "a xyphr & nyx el material fuente de usuarios o terceros."
                 )
             },
         },
@@ -594,7 +594,7 @@ def signature_page_bytes(
     ]))
     story.extend([table, Spacer(1, 10 * mm)])
 
-    story.append(Paragraph("<b>Arquitectura, direccion intelectual, curaduria y evolucion iterativa: AKaaTH_dev.</b>", body_style))
+    story.append(Paragraph("<b>Arquitectura, direccion intelectual, curaduria y evolucion iterativa: xyphr & nyx.</b>", body_style))
     story.append(Spacer(1, 3 * mm))
     story.append(Paragraph("Desarrollo asistido por inteligencia artificial mediante investigacion, analisis, contraste, pruebas y optimizacion realizados durante multiples sesiones e iteraciones bajo direccion y curaduria humana.", body_style))
     story.append(Spacer(1, 3 * mm))
@@ -630,10 +630,10 @@ def append_signature_page(source_path: Path, output_path: Path, page_pdf_bytes: 
 
     if source_reader.metadata:
         metadata = {str(key): str(value) for key, value in source_reader.metadata.items() if value is not None}
-        metadata["/AKaaTHPostprocessor"] = f"{APP_NAME} {APP_VERSION}"
+        metadata["/xyphrPostprocessor"] = f"{APP_NAME} {APP_VERSION}"
         writer.add_metadata(metadata)
     else:
-        writer.add_metadata({"/AKaaTHPostprocessor": f"{APP_NAME} {APP_VERSION}"})
+        writer.add_metadata({"/xyphrPostprocessor": f"{APP_NAME} {APP_VERSION}"})
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("wb") as handle:
