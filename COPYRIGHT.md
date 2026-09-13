@@ -16,3 +16,18 @@ y optimizacion.
 La licencia Apache 2.0 permite el uso comercial, la modificacion y
 la redistribucion, siempre que se preserven los avisos de copyright
 y se documenten los cambios realizados.
+
+## Identidad dual (segun IDENTITY.md v2.0)
+
+Este repositorio forma parte del ecosistema de trabajo de AKaaTH_dev,
+bajo los siguientes roles:
+
+- **xyphr** (Sáifer / Cipher): ejecucion, codigo, scripts, algoritmos.
+  Aplica a este repositorio docs-signer, centrado en el firmador
+  akaath_pdf_signer.py.
+
+- **nyx** (Niks / Nix): estructura, documentacion, metadatos, diseno,
+  trazabilidad. Aplica a la documentacion asociada, al manifiesto
+  APM-1 y a los esquemas de procedencia.
+
+La autoria tecnica de este repositorio corresponde al rol xyphr.
